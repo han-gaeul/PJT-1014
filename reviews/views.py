@@ -31,7 +31,7 @@ def detail(request, pk):
     return render(request, 'reviews/detail.html', context)
 
 def update(request, pk):
-    revires = Review.objects.get(pk=pk)
+    reviews = Review.objects.get(pk=pk)
     if request.method == 'POST':
         reviews_form = ReviewForm(request.POST, instance=review)
         if reviews_form.is_valid():
