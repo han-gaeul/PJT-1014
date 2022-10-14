@@ -29,3 +29,17 @@ def detail(request, pk):
         'reviews' : reviews
     }
     return render(request, 'reviews/detail.html', context)
+
+def update(request, pk):
+    revires = Review.objects.get(pk=pk)
+    if request.method == 'POST':
+        reviews_form = ReviewForm(request.POST, instance=review)
+        if reviews_form.is_valid():
+            reviews_form.save()
+            return redirect('review:detail', review.pk)
+    else:
+        reviews_form = ReviewForm(instance=review)
+    context = {
+        'reviews_form' : reviews_form
+    }
+    return render(request, 'reviews/form.html', context)
