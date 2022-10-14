@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 # 회원가입
@@ -36,3 +37,11 @@ def login(request):
 # 회원 목록
 def index(request):
     return render(request, 'accounts/index.html')
+
+# 회원 정보 조회
+def detail(request, pk):
+    user = get_user_model().objects.get(pk=pk)
+    context = {
+        'user' : user
+    }
+    return render(request, 'accountes/detail.html')
