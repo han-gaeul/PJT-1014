@@ -1,6 +1,15 @@
 from django.shortcuts import redirect, render
+from .models import Review
+from .forms import ReviewForm
 
 # Create your views here.
+def index(request):
+    reviews = Review.objects.order_by('-pk')
+    context = {
+        'reviews' : reviews
+    }
+    return render(request, 'reviews/index.html', context)
+
 def create(request):
     if request.method == 'POST':
         reviews_form = ReviewForm(request.POST)
