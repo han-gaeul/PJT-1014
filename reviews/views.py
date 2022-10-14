@@ -33,12 +33,12 @@ def detail(request, pk):
 def update(request, pk):
     reviews = Review.objects.get(pk=pk)
     if request.method == 'POST':
-        reviews_form = ReviewForm(request.POST, instance=review)
+        reviews_form = ReviewForm(request.POST, instance=reviews)
         if reviews_form.is_valid():
             reviews_form.save()
-            return redirect('review:detail', review.pk)
+            return redirect('review:detail', reviews.pk)
     else:
-        reviews_form = ReviewForm(instance=review)
+        reviews_form = ReviewForm(instance=reviews)
     context = {
         'reviews_form' : reviews_form
     }
