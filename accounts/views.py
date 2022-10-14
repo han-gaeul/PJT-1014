@@ -2,6 +2,7 @@ from cmath import log
 from django.shortcuts import redirect, render
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -62,3 +63,8 @@ def update(request, pk):
         'form' : form
     }
     return render(request, 'accounts/update.html', context)
+
+# 로그아웃
+def logout(request):
+    auth_logout(request)
+    return redirect('accounts:index')
