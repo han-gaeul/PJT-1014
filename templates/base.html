@@ -1,0 +1,37 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <button>
+          <a href="">리뷰 목록</a>
+        </button>
+        <button>
+          <a href="">리뷰 작성</a>
+        </button>
+      </div>
+      <div>
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'accounts:create' %}">작성</a>
+        {% endif %}
+        {% for account in accounts %}
+          <h4>
+            <a href="{% url 'reviews:detail' reciew.pk %}">{{ review.title }}</a>
+          </h4>
+          <hr>
+        {% endfor %}
+      </div>
+    </nav>
+  </body>
+
+</html>
