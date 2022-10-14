@@ -1,11 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base,html' %}
 {% load django_bootstrap5 %}
 
-{% block bodt %}
-  <h1>회원가입</h1>
-  <form action="" method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="OK" %}
-  </form>
-{% endblock bodt %}
+{% block body %}
+  <div class="container mt-3">
+    <h1>회원 목록</h1>
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th>번호</th>
+          <th>사용자 이름</th>
+          <th>이메일</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for account in accounts %}
+          <tr>
+            <th>{{ account.pk }}</th>
+            <th>
+              <a href="{% url 'accounts:detail' account.pk %}">{{ account.username }}</a>
+            </th>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock body %}
