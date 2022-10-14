@@ -1,8 +1,10 @@
+from cmath import log
 from django.shortcuts import redirect, render
-from .forms import CustomUserCreationForm
+from .forms import CustomUserChangeForm, CustomUserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # 회원가입
@@ -44,4 +46,19 @@ def detail(request, pk):
     context = {
         'user' : user
     }
-    return render(request, 'accountes/detail.html')
+    return render(request, 'accountes/detail.html', context)
+
+# 회원 정보 수정
+@login_required
+def update(request, pk):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:detail', request.user.pk)
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form' : form
+    }
+    return render(request, 'accounts/update.html', context)
