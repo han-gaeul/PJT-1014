@@ -3,10 +3,10 @@
 
 {% block body %}
   <div class="container">
-    <p>{{ review.created_at | date:"SHORT_DATEITME_FORMAT" }}</p>
-    <p>{{ review.updated_at | date:"y-m-d- D" }}</p>
-    <p>{{ review.content }}</p>
-    <a href="{% url 'reviews:update' review.pk %}">수정</a>
+    <p>{{ reviews.created_at | date:"SHORT_DATEITME_FORMAT" }}</p>
+    <p>{{ reviews.updated_at | date:"y-m-d- D" }}</p>
+    <p>{{ reviews.content }}</p>
+    <a href="{% url 'reviews:update' reviews.pk %}">수정</a>
     <a href="{% url 'reviews:delete' %}">삭제</a>
   </div>
 {% endblock body %}

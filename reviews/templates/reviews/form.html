@@ -9,7 +9,7 @@
       <h1>리뷰 수정</h1>
     {% endif %}
 
-    <form action="{% url 'review:index' %}" method="POST" class="form-control border border-white">
+    <form action="{% url 'reviews:index' %}" method="POST" class="form-control border border-white">
       {% csrf_token %}
       {% bootstrap_form reviews_form %}
       <input type="submit" value="등록" class="btn btn-ouline-secondary text-dark">
