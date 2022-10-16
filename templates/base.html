@@ -11,18 +11,26 @@
   </head>
 
   <body>
-    <nav>
-      <div>
+    <nav class="navbar">
+      <div class="justify-content-between">
         <button>
-          <a href="">리뷰 목록</a>
+          <a href="{% url 'reviews:index' %}">리뷰 목록</a>
         </button>
         <button>
-          <a href="">리뷰 작성</a>
+          <a href="{% url 'accounts:index' %}">회원 목록</a>
         </button>
       </div>
       <div>
         {% if request.user.is_authenticated %}
-          <a href="{% url 'accounts:create' %}">작성</a>
+          <a href="{% url 'reviews:create' %}">작성</a>
+          <a href="{% url 'accounts:logout' %}">로그아웃</a>
+        {% else %}
+          <button>
+            <a href="{% url 'accounts:login' %}">로그인</a>
+          </button>
+          <button>
+            <a href="{% url 'accounts:signup' %}">회원가입</a>
+          </button>
         {% endif %}
         {% for account in accounts %}
           <h4>
@@ -32,6 +40,7 @@
         {% endfor %}
       </div>
     </nav>
+    {% block content %}{% endblock content %}
   </body>
 
 </html>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
-{% block body %}
+{% block content %}
   <div class="container">
     <div class="d-flex jestify-content-center flex-wrap p-2 card-wrap">
       {% for review in reviews %}
@@ -13,4 +13,4 @@
       {% endfor %}
     </div>
   </div>
-{% endblock body %}
+{% endblock content %}

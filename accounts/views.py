@@ -1,4 +1,3 @@
-from cmath import log
 from django.shortcuts import redirect, render
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 from django.contrib.auth import login as auth_login
@@ -21,7 +20,7 @@ def signup(request):
     context = {
         'form' : form
     }
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'accounts/index.html', context)
 
 # 로그인
 def login(request):
