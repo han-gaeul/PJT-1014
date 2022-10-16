@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
-{% block body %}
+{% block content %}
   <div class="container">
     <p>{{ reviews.created_at | date:"SHORT_DATEITME_FORMAT" }}</p>
     <p>{{ reviews.updated_at | date:"y-m-d- D" }}</p>
@@ -9,4 +9,4 @@
     <a href="{% url 'reviews:update' reviews.pk %}">수정</a>
     <a href="{% url 'reviews:delete' %}">삭제</a>
   </div>
-{% endblock body %}
+{% endblock content %}

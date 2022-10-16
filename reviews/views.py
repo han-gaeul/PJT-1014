@@ -15,7 +15,7 @@ def create(request):
         reviews_form = ReviewForm(request.POST)
         if reviews_form.is_valid():
             reviews_form.save()
-            return redirect('review:index')
+            return redirect('reviews:index')
     else:
         reviews_form = ReviewForm()
     context = {
@@ -36,7 +36,7 @@ def update(request, pk):
         reviews_form = ReviewForm(request.POST, instance=reviews)
         if reviews_form.is_valid():
             reviews_form.save()
-            return redirect('review:detail', reviews.pk)
+            return redirect('reviews:detail', reviews.pk)
     else:
         reviews_form = ReviewForm(instance=reviews)
     context = {
@@ -46,4 +46,4 @@ def update(request, pk):
 
 def delete(request, pk):
     Review.objects.get(pk=pk).delete()
-    return redirect('review:index')
+    return redirect('reviews:index')

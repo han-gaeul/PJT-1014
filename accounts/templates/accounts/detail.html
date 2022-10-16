@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
-{% block bodt %}
+{% block content %}
   <h1>{{ user.username }}</h1>
   <div class="mb-3 mt-3">
     <label for="username" class="form-label">사용자 이름</label>
@@ -10,4 +10,4 @@
       {{ user.full_name }}</p>
     <p class="form-control" name="content" id="username" diesaled="diesaled" readonly="readonly">{{ user.pk }}</p>
   </div>
-{% endblock bodt %}
+{% endblock content %}
